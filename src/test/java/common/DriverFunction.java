@@ -13,6 +13,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -22,6 +24,7 @@ import utilities.PropertyFile;
 public class DriverFunction {
     private static WebDriver driver;
     ChromeOptions chromeOptions = new ChromeOptions();
+    EdgeOptions edgeOptions = new EdgeOptions();
     private final EnvironmentConfiguration envConfig = new EnvironmentConfiguration(System.getProperty("env"));
     String browserName;
 
@@ -32,11 +35,9 @@ public class DriverFunction {
         switch (browserName) {
             case "firefox":
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-
                 driver = new FirefoxDriver(firefoxOptions);
                 ThreadWebDriver.setDriver(driver);
                 DriverFunction.driver = ThreadWebDriver.getDriver();
-
                 break;
             case "chrome":
                 chromeOptions = new ChromeOptions();
@@ -49,22 +50,24 @@ public class DriverFunction {
                     chromeOptions.setExperimentalOption("useAutomationExtension", false);
                     chromeOptions.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
                     chromeOptions.addArguments("chrome.switches", "--disable-extensions");
-
                     driver = new ChromeDriver(chromeOptions);
                     ThreadWebDriver.setDriver(driver);
                     DriverFunction.driver = ThreadWebDriver.getDriver();
                 }
                 break;
+            case "edge":
+                edgeOptions = new EdgeOptions();
+                driver = new EdgeDriver(edgeOptions);
+                ThreadWebDriver.setDriver(driver);
+                DriverFunction.driver = ThreadWebDriver.getDriver();
+                break;
         }
         if (driver != null) {
             driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         }
     }
 
-    public WebDriver getDriver() {
-        return driver;
-    }
 
     @After
     public void tearDown() throws InterruptedException {

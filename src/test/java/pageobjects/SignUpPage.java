@@ -16,4 +16,12 @@ public class SignUpPage {
     public String txtPassword() {
         return System.getProperty("SignUp.Password.TextBox");
     }
+
+    public String txtConfirmPassword() {
+        return System.getProperty("SignUp.ConfirmPassword.TextBox");
+    }
+
+    public String btnCreateNewUser() {
+        return System.getProperty("SignUp.CreateAccount.Button");
+    }
 }

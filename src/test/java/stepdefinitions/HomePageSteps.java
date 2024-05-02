@@ -39,8 +39,7 @@ public class HomePageSteps {
     }
 
     @When("click to Create new user")
-    public void clickToCreateNewUser()  {
-        System.out.println("LLLLLLLL");
+    public void clickToCreateNewUser() {
         commonActions.clickElement(homePage.linkSignUp());
     }
 
