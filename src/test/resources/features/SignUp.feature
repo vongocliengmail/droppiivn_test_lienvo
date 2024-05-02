@@ -12,4 +12,4 @@ Feature: Sign Up user
 
     Examples:
       | first_name   | last_name   | email                | password    |
-      | FirstName_T1 | LastName_T1 | emailtest123456771@gmail.com | P@ssw0rd123 |
+      | FirstName_T1 | LastName_T1 | emailtest1@gmail.com | P@ssw0rd123 |

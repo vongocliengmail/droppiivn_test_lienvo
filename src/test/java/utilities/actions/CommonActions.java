@@ -65,4 +65,11 @@ public class CommonActions {
         }
         return getElemText;
     }
+    public void sleep(double second) {
+        try {
+            Thread.sleep((long) (1000 * second));
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
