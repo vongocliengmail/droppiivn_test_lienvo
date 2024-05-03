@@ -43,4 +43,8 @@ public class HomePageSteps {
         commonActions.clickElement(homePage.linkSignUp());
     }
 
+    @When("click to Sign In link")
+    public void clickToSignInLink() {
+        commonActions.clickElement(homePage.linkSignIn());
+    }
 }
